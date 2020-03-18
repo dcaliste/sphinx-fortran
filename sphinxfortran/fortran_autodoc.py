@@ -201,6 +201,8 @@ class F90toRst(object):
                         container = getattr(self, subblock['block'] + 's')
                         container[subblock['name']] = subblock
                         subblock['module'] = module
+                        if subblock['name'] in block['vars']:
+                            subblock['attrspec'] = block['vars'][subblock['name']].get('attrspec', [])
 
                         # Variables
                         varnames = subblock['sortvars']
